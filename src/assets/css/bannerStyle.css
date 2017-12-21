@@ -1,0 +1,44 @@
+@font-face {
+  font-family: VolvoBroadProDigital;
+  src: url("../../fonts/VolvoBroadProDigital/VolvoBroadProDigital-webfont.woff"); }
+body {
+  background-image: url("../../img/desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.modal-dialog {
+  width: 40% !important; }
+
+.bannerDiv {
+  font-family: VolvoBroadProDigital;
+  color: white;
+  font-size: 1.4em;
+  letter-spacing: 1.5px;
+  text-align: right;
+  margin-top: 30px; }
+  .bannerDiv h2 {
+    margin-top: 5px; }
+    .bannerDiv h2 a {
+      text-decoration: underline;
+      color: #00bcd4; }
+
+.p a {
+  text-decoration: underline; }
+
+@media screen and (max-width: 991px) {
+  .modal-dialog {
+    width: 96% !important; } }
+@media screen and (max-width: 767px) {
+  body {
+    background-image: url("../../img/mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; }
+
+  .bannerDiv {
+    margin-top: 5px;
+    text-align: left; }
+    .bannerDiv h2 {
+      font-size: 0.8em !important;
+      letter-spacing: 1px; } }
+
+/*# sourceMappingURL=bannerStyle.css.map */

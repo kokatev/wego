@@ -1,0 +1,377 @@
+body{ background: #fff; font-size: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #505050;}
+a:hover{ text-decoration: none; cursor: pointer;}
+ul, li{ list-style: none;}
+label{ font-weight: normal; margin: auto; max-width: none;}
+@font-face { font-family: VolvoBroadProDigital;
+  src: url('fonts/VolvoBroadProDigital-webfont.eot'); /* IE9 Compat Modes */
+  src: url('fonts/VolvoBroadProDigital-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       /*url('fonts/VolvoBroadProDigital-webfont.woff2') format('woff2'),  Super Modern Browsers */
+       url('fonts/VolvoBroadProDigital-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/VolvoBroadProDigital-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/VolvoBroadProDigital-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */}
+
+.fuel-calculator{ padding: 40px; background: #d8d7d5; margin: 0 0 80px 0;}
+.choose-input{ padding: 0 20px;}
+.fuel-calculator .intro{ display: inline-block; font-size: 16px; line-height: 16px; font-weight: bold; margin: 0 0 10px 0; padding: 1px 0 1px 30px; text-transform: uppercase;}
+.oil{ background: url("../img/fuel_type.svg") no-repeat left center; background-size: contain; padding: 0 0 0 30px; font-weight: normal;}
+.truck{ background: url("../img/annual_milage.svg") no-repeat left center;  background-size: contain; padding: 0 0 0 30px; font-weight: normal;}
+.funnel{ background: url("../img/fuel_consumption.svg") no-repeat left center;  background-size: contain; padding: 0 0 0 30px; font-weight: normal; }
+.fuel-calculator p{ line-height: 24px; margin: 0 0 25px 0;}
+.fuel-controls{font-family: VolvoBroadProDigital; font-size: 25px;}
+.fuel-controls p{display: block; text-align: center; font-size: 25px; line-height: 25px; margin: 15px 0 0 0; letter-spacing: 0.7px;}
+.fuel-controls .fuel-type{ text-align: center; display: inline-block; letter-spacing: 0.7px; margin: 0 10px 0 0;}
+.fuel-controls span{ }
+
+.heading{ margin: 0 0 50px 0;}
+.heading .title{ font-family: VolvoBroadProDigital; font-size: 48px; line-height: 40px; margin: 0 0 20px 0; text-align: center;}
+.heading p{ text-align: center; margin: 0 60px;}
+.overview-details{ text-align: right; display: block;}
+.overview-details a{ font-size: 14px; font-weight: bold; color: #2a4ab4; margin: 0 0 5px 0; cursor: pointer;}
+.read-more-content{ display: none; margin: 0 auto; padding: 30px 0 20px; width: 750px;}
+.read-more-content >span{display: block; text-align: center; margin: 0 0 20px 0;}
+.read-more-content .truck-data .truck-info{ text-align: left; font-size: 14px; margin: 0 0 0 20px; line-height: 22px;}
+.truck-data{ padding: 20px; background: #f1f1f1; color: #424242;}
+.truck-data span{ font-weight: bold;}
+.truck-data .truck-title{ font-weight: bold; margin: 0 0 10px 0; display: block; color: #4E4D53; text-transform: uppercase;}
+
+.details-container{display: none; padding: 0 0 40px 0;}
+.show-overview{ display: none;}
+
+.mobile-overview-details{margin: 0 0 40px 0; display: table; width: 100%;}
+.mobile-overview-details a{ width: 50%; background: #f1f1f1; border-top: 2px solid #f1f1f1; display: table-cell; text-align: center; color: #424242; padding: 20px 0; font-weight: bold; line-height: 16px;}
+.mobile-overview-details a.current{ border-top: 2px solid  #2551b9; background: #bedce7;}
+
+.linearGraphContainer{ margin: 0 0 40px 0;}
+.linearGraph-heading{ margin: 0 0 40px 0; text-align: center;}
+.linearGraph-heading .title{ font-family: VolvoBroadProDigital; font-size: 32px; line-height: 30px; margin: 0 0 15px 0;}
+.linearGraph-heading p{}
+.barContainer { height: 40px; position: relative; margin: 0 0 12px 0;}
+.barContainer .bar{ height: 40px; border-radius: 10px; position: absolute; -webkit-transition: all .8s ease; -moz-transition: all .8s ease; -ms-transition: all .8s ease; -o-transition: all .8s ease; transition: all .8s ease;}
+.bar::before { content: ""; position: absolute; right: 20px; top: -29px; width: 90px; height: 43px; background-size: contain;}
+.bar.disel::before{background: url("../img/truck-icon-FH-sand.png") no-repeat; background-size: contain;}
+.bar.lng::before{background: url("../img/truck-icon-FH-blue.png") no-repeat; background-size: contain;}
+.barContainer .bar span{ float: right; font-size: 32px; font-family: VolvoBroadProDigital; margin: 0 15px 0 0; line-height: 40px; letter-spacing: 0.7px;}
+.barContainer .bar.disel{ background: #dacda8; width: 90%; max-width: 85%; left: 0; top: 0; z-index: 1;}
+.barContainer .bar.lng{ background: #3ba6c8; width: 100%; left: 0; top: 0; z-index: 0; color: white;}
+
+.labelContainer{ display: block; margin: 0 0 10px 0; clear: both;}
+.labelContainer .info-label{  margin: 0 0 5px 10px; font-family:VolvoBroadProDigital; font-size: 24px; line-height: 20px; text-transform: uppercase; padding: 0 0 0 35px; position: relative;}
+.labelContainer .info-label::before{ position: absolute; content: ""; background: #3ba6c8; height: 20px; width: 20px; left: 0; top: 0; border-radius: 5px;}
+.info-label.disel::before{background: #dacda8;}
+
+.details-labels{}
+.details-labels .info-label{ padding: 0 35px 0 0; float: right; clear: both;}
+.details-labels .info-label::before{ right: 0; left: auto;}
+
+.carbon-impact-container{ text-align: center; margin: 0 auto 70px; padding: 0 70px;}
+.carbon-impact-container .carbon-graph .co2{ display: inline-block; width: 198px; margin: 0 10px; border-radius: 0 0 10px 10px; border: 1px solid #fff; max-height: 322px; min-height: 184px; position: relative; -webkit-transition: all .8s ease; -moz-transition: all .8s ease; -ms-transition: all .8s ease; -o-transition: all .8s ease; transition: all .8s ease;}
+.co2 p{ text-align: left; position: absolute; bottom: 10px; left: 10px; right: 10px; margin: 0;}
+span.fuel-content{ display: block; font-size: 44px; font-family: VolvoBroadProDigital; line-height: 35px; margin: 0 0 15px 0;}
+span.carbon-kg, span.kg-year{ display: block;  font-size: 18px; font-weight: bold; line-height: 18px; margin: 0 0 5px 0;}
+.carbon-graph .disel-graph{ background: #dacda8; box-shadow: 0px 2px 0px 2px #dacda8; height: 250px; position: relative;}
+.carbon-graph .co2::before{content: ""; background-size: contain; position: absolute; top: -15px; left: 0; height: 15px; width: 100%; display: block;}
+.carbon-graph .disel-graph::before{  background: url("../img/diesel-co2-top.png") no-repeat left top; }
+.carbon-graph .disel-graph::after{position: absolute; top: -12px; width: 2px; height: 11px; background-color: #dacda8; right: -3px; content: '';}
+.carbon-graph .lng-graph::before{ background: url("../img/lng-co2-top.png") no-repeat left top;}
+.carbon-graph .lng-graph{ background:#16a6c9; color: #fff;  box-shadow: 0px 2px 0px 2px #3ba6c8; height: 225px;}
+
+.co2-reduction{ position: absolute; top: -45px; right: -30px; background: url("../img/co2blob.png") no-repeat left top; background-size: contain; width: 134px; height: 122px; padding: 35px 25px 10px 0;}
+.co2-reduction span{font-family:VolvoBroadProDigital; color: #fff;}
+.co2-reduction span.co2-percentage{ font-size: 50PX; line-height: 40px; display: block;}
+.co2-reduction span.reduction{ font-size: 20PX; line-height: 18px;}
+
+.table>thead>tr>th{font-size: 28px; text-align: center; font-family: VolvoBroadProDigital; line-height: 25px; font-weight: normal; border: none; padding: 14px;}
+.table>tbody>tr>td{ border: none; padding: 14px; font-size: 17px;}
+.table-striped>tbody>tr:nth-of-type(odd){ background-color: #f1f1f1;}
+.table>tbody>tr>td:first-child{ font-weight: bold; text-align: left; text-transform: uppercase; }
+
+.chart-container{ padding: 0 40px;}
+.info-title{font-size: 45px; font-family: VolvoBroadProDigital;}
+.info-box{ margin: 0 0 30px 0;}
+.info-box .p{}
+.chart-box { display: table; width: 100%;}
+.chart-title{ display: table-cell; width: 100px; font-size: 18px; font-weight: bold; border-right: 2px solid #d7d7d2; vertical-align: middle;}
+.chart-wrapper{ display: table-cell; padding: 0 0 15px 20px;}
+.chart-wrapper .chart{ padding: 0 10px; height: 42px; margin: 0 0 5px 0;}
+.disel-chart{background: #dacda8;}
+.lng-chart{background: #3ba6c8; color: #fff;}
+.chart-wrapper .chart span{ font-size: 18px; font-weight: bold; line-height: 42px;}
+.chart-wrapper .disel-chart ,.chart-wrapper .lng-chart{ font-size: 18px; font-weight: bold; line-height: 42px; min-width: 45%; white-space: nowrap;}
+@media only screen and (max-width: 1024px) {.chart-wrapper .disel-chart ,.chart-wrapper .lng-chart{min-width: 48%;}}
+.table-box-container{ display: none;}
+.end-of-life-table{ display: block;}
+.table-box-container .table>thead>tr>th{ text-align: left;}
+
+/* Custom Radio button --------------------- */
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+   position: absolute;
+   left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+   position: relative;
+   padding-left: 30px;
+   cursor: pointer;
+   line-height: 20px;
+   display: inline-block;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+   content: '';
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 22px;
+   height: 22px;
+   border-radius: 100%;
+   background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+   content: '';
+   width: 18px;
+   height: 18px;
+   background: #2a4ab4;
+   position: absolute;
+   top: 2px;
+   left: 2px;
+   border-radius: 100%;
+}
+[type="radio"]:not(:checked) + label:after {
+   opacity: 0;
+   -webkit-transform: scale(0);
+   transform: scale(0);
+}
+
+/* Tabs & Accordian CSS --------------------- */
+#tabs {}
+ul#tabs {  padding: 0; }
+#tabs li { clear: both;}
+#tabs li a {
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  padding: 13px 20px 13px;
+  font-size: 14px;
+  line-height: 14px;
+  background: #f1f1ef;
+  color: #4d4e53;
+}
+#tabs li a:hover, #tabs li a.active {
+  background: #c1dce7;
+  color: #1251b5;
+}
+#tabs section {
+  display: none; /* I NEED TO FIX THIS */
+  float: left;
+  overflow: hidden;
+  padding: 20px 0px;
+  /*margin: 0 0 20px 0;*/
+}
+.no-js #tabs section {
+  display: block; /* I NEED TO FIX THIS */
+}
+#tabs li ul li a {
+  padding: 10px 25px;
+}
+@media only screen and (min-width: 769px) {
+  #tabs {
+    background:#f1f1ef;
+    position: relative;
+    border: none;
+  }
+  #tabs li {
+    display: inline;
+  }
+  #tabs li a {
+    display: inline-block;
+    width: 25%;
+    margin: 0 0 0 -4px;
+    text-align: center;
+    border-top: 3px solid #f1f1ef;
+  }
+  #tabs li:nth-child(4) a {
+    width: 25.2%;
+  }
+   #tabs li a.active, #tabs li a.active:hover {
+    border-top: 3px solid #1251b5;
+  }
+  #tabs li a:hover{
+    border-top: 3px solid #c1dce7;
+  }
+  #tabs section {
+    padding: 50px 0px 0;
+    /*border: 1px solid #dedede;*/
+    margin: 0 0 30px 0;
+  }
+}
+
+/* Slider css --------------------- */
+/*.slider { position: relative; -webkit-appearance: none; width: 100%;  height: 5px;  border-radius: 2.5px;  background: #828282; outline: none;  -webkit-transition: .2s; transition: opacity .2s;}
+.slider::before{ content: ""; color: #828282; font-size: 20px; line-height: 0px; width: 9px; display: block; background: #828282; height: 9px; border-radius: 50%; margin: -2px 0 0 0;}
+.slider::after{ content: ""; color: #828282; font-size: 20px; line-height: 0px; width: 9px; display: block; background: #828282; height: 9px; border-radius: 50%; margin: -2px 0 0 0;}
+
+.slider::-webkit-slider-thumb { z-index: 999; -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #2a4ab4; cursor: pointer;}
+.slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #2a4ab4; cursor: pointer;}*/
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100%;
+  background: transparent;
+  position: relative;
+  padding: 0 8px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::before{position: absolute; content: ""; color: #828282; font-size: 20px; line-height: 0px; width: 9px; display: block; background: #828282; height: 9px; border-radius: 50%; margin: -2px 0 0 0; left: 0;}
+input[type=range]::after{position: absolute; content: ""; color: #828282; font-size: 20px; line-height: 0px; width: 9px; display: block; background: #828282; height: 9px; border-radius: 50%; margin: -2px 0 0 0; right: 0;}
+input[type=range]::-webkit-slider-runnable-track {
+  outline: none;
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #828282;
+  border-radius: 0px;
+  border: 0px solid #828282;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #2a4ab4;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #828282;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #828282;
+  border-radius: 0px;
+  border: 0px solid #828282;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #2a4ab4;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+input[type=range]::-ms-fill-lower {
+  background: #828282;
+  border: 0px solid #828282;
+  border-radius: 2.5px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #828282;
+  border: 0px solid #828282;
+  border-radius: 2.5px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #828282;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #2a4ab4;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #828282;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #828282;
+}
+input[type=range]::-ms-tooltip {
+    display: none;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    input[type=range] { margin: -35px 0;}
+}
+
+@media (min-width: 930px) and (max-width: 1024px) {
+    .choose-input{ margin: 0 0 25px 0;}
+    .fuel-controls .fuel-type{ text-align: left;}
+    .chart-container{ padding: 0 20px;}
+}
+
+/* --- Responsive css -----------------------*/
+@media only screen and (max-width: 768px) {
+  .mobile-container{ padding: 0;}
+  .mobile-container .row{ margin-right: 0; margin-left: 0;}
+  .mobile-container [class^="col-"]{ padding-right: 0; padding-left: 0;}
+  .choose-input{ margin: 0 0 45px 0;}
+  .fuel-calculator{ padding: 35px 0 0; text-align: center;}
+  .title-info p{font-size: 15px; line-height: 20px; margin: 0 0 25px 0;}
+
+  .heading{ margin: 0 15px 50px;}
+  .heading .title, .linearGraphContainer .title{ font-size: 35px;}
+  .heading p{ margin: 0;}
+
+  .read-more-content{ width: 100%; padding-bottom: 0;}
+  .read-more-content .truck-data { margin: 0 0 20px 0;}
+
+  .carbon-impact-container{ width: 100%; padding: 0;}
+  .carbon-graph{ margin: 0 0 30px 0;}
+  .carbon-impact-container .carbon-graph .co2{ width: 38%; max-width: 150px; margin: 0 1%;}
+  .carbon-graph .co2::before{ top: -9px; background-size: contain;}
+  .carbon-graph .co2::after{ top: -8px;}
+  span.fuel-content{ font-size: 34px; line-height: 30px; margin: 0 0 10px 0;}
+  span.carbon-kg, span.kg-year{ font-size: 14px; line-height: 14px;}
+
+  .co2-reduction{ width: 100px; height: 98px; padding: 25px 15px 10px 5px;}
+  .co2-reduction span.co2-percentage{ font-size: 35PX; line-height: 30px;}
+  .co2-reduction span.reduction{ font-size: 15PX; line-height: 15px;}
+
+  .barContainer{ height: 30px; margin: 0 0 10px 0;}
+  .barContainer .bar{height: 30px; border-radius: 5px;}
+  .barContainer .bar span{ font-size: 18px; line-height: 30px; padding: 0 5px 0 0; margin: 0;}
+  .bar::before { right: 5px; top: -14px; width: 45px; height: 24px;}
+  .bar.disel::before, .bar.lng::before{background-size: contain;}
+  .labelContainer{ text-align: left;}
+  .linearGraph-heading{ margin: 0 0 20px 0; padding: 0 15px 0;}
+  .labelContainer .info-label{ font-size: 20px; line-height: 20px; padding: 0 0 0 18px; margin: 0 0 0 5px;}
+  .labelContainer .info-label::before{ top: 5px; height: 10px; width: 10px; border-radius: 2px;}
+  .details-labels .info-label{ padding: 0 18px 0 0; margin: 0 5px 0 0;}
+  .details-labels{ display: none;}
+
+  .chart-container{ padding: 0;}
+  .chart-container .info-box{ text-align: center; padding: 0 15px; margin: 0 0 10px 0;}
+  .info-title{ font-size: 30px; line-height: 30px; margin: 0 0 10px 0;}
+  .chart-box-container{ display: none;}
+  .table-box-container{ display: block; margin: 0 0 45px 0;}
+
+  .table>thead>tr>th{ font-size: 20px;}
+  .table>tbody>tr>td{ font-size: 16px; padding: 12px;}
+}

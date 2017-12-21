@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TVS Wego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dyna Fleet Banner">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bannerStyle.css">
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/animate.css/animate.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+</head>
+
+<body>
+  <header>
+    <!-- Mustache code below -->
+  {{#header}}
+  <h1>{{main_header}}</h1>
+  <h4>{{tagline}}</h4>
+  {{/header}}
+
+    <nav>
+    </nav>
+
+  </header>
+
+  <div class="container-fluid">
+    <img class="lazy" data-src="assets/img/1.jpg" />
+    <img class="lazy" data-src="assets/img/2.jpg" />
+    <img class="lazy" data-src="assets/img/3.jpg" />
+    <img class="lazy" data-src="assets/img/4.jpg" />
+    <img class="lazy" data-src="assets/img/5.jpg" />
+    <img class="lazy" data-src="assets/img/6.jpg" />
+    <img class="lazy" data-src="assets/img/7.jpg" />
+    <img class="lazy" data-src="assets/img/1.jpg" />
+    <img class="lazy" data-src="assets/img/2.jpg" />
+    <img class="lazy" data-src="assets/img/3.jpg" />
+    <img class="lazy" data-src="assets/img/4.jpg" />
+    <img class="lazy" data-src="assets/img/5.jpg" />
+    <img class="lazy" data-src="assets/img/6.jpg" />
+  </div>
+
+  <footer>
+
+    <h1>Social links</h1>
+
+<!-- Mustache code below -->
+      <ul>
+	    {{#footer}}
+	    	<li>{{fb_link}}</li>
+	    	<li>{{twitter_link}}</li>
+	    	<li>{{twitter_link}}</li>
+	    {{/footer}}
+	    </ul>
+
+  </footer>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/skrollr/skrollr.min.js"></script>
+    <script src="vendor/jquery.lazy/jquery.lazy.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

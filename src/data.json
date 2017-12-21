@@ -1,0 +1,10 @@
+{
+    "footer": [
+      { "fb_link":"http://facebook.com",
+      "twitter_link":"http://twitter.com" }
+    ],
+    "header":[
+      { "main_header":"This is a main header",
+      "tagline":"This is a tagline." }
+    ]
+}
