@@ -1,5 +1,4 @@
-# TVS Wego 2.0 - Go Live 12th Jan
--------------------------------
+# TVS Wego 2.0 - Instructions
 - We're goint to use Bootstrap, Mustache, jQuery & SASS for the development. 
 - For Lazy loading of images, we're using jQuery.lazy library
 - For build package we're using Gulp
