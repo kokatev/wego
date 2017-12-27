@@ -1,0 +1,17 @@
+// @font-face {
+//   font-family: VolvoBroadProDigital;
+//   src: url("../../fonts/VolvoBroadProDigital/VolvoBroadProDigital-webfont.woff"); }
+
+//Example use of media queries
+@import 'media-mixins';
+@import 'nav';
+@import 'hero';
+@import 'tabs';
+@import 'footer';
+
+
+@include breakpoint(sm) {
+h4{
+  color:red;
+}
+}

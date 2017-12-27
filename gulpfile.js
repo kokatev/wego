@@ -5,7 +5,9 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
-var mustache = require('gulp-mustache');
+// var mustache = require('gulp-mustache');
+var handlebars = require('gulp-compile-handlebars');
+var rename = require('gulp-rename');
 
 //Copy all HTML to dist
 gulp.task('copyHTML',function () {
@@ -46,7 +48,7 @@ gulp.task('copyFonts',function() {
   .pipe(gulp.dest('dist/fonts/'));
 });
 
-gulp.task('default', [/*'copyHTML',*/ 'mustache', 'imagemin', 'minifyJS', 'sass', 'copyVendor','serve','watch']);
+gulp.task('default', [/*'copyHTML',*/ 'hbs', 'imagemin', 'minifyJS', 'sass', 'copyVendor','serve','watch']);
 
 // Static Server + watching scss/html files
 gulp.task('serve', function() {
@@ -56,10 +58,13 @@ gulp.task('serve', function() {
 });
 
 //Convert template to html
-gulp.task('mustache', function() {
-    gulp.src('src/*.html')
-        .pipe(mustache('src/data.json'))
-        .pipe(gulp.dest('./dist'));
+gulp.task('hbs', function ()  {
+  return gulp.src('src/*.hbs').pipe(handlebars({}, {
+      ignorePartials: false,
+      batch: ['src/templates']
+    })).pipe(rename({
+      extname: '.html'
+    })).pipe(gulp.dest('dist/'));
 });
 
 //Task to watch any changes in real time in Devlopment
@@ -67,7 +72,7 @@ gulp.task('watch',  function () {
   gulp.watch('src/assets/js/*.js', ['minifyJS']);
   gulp.watch('src/assets/img/*', ['imagemin']);
   gulp.watch('src/assets/scss/*.scss', ['sass']);
-  gulp.watch('src/*.html', ['mustache']);
+  gulp.watch('src/*.hbs', ['hbs']);
   // gulp.watch('src/*.html', ['copyHTML']);
   gulp.watch(['src/index.html', 'src/assets/scss/*', 'src/assets/js/*']).on('change', browserSync.reload);
 });
