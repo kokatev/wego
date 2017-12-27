@@ -72,7 +72,8 @@ gulp.task('watch',  function () {
   gulp.watch('src/assets/js/*.js', ['minifyJS']);
   gulp.watch('src/assets/img/*', ['imagemin']);
   gulp.watch('src/assets/scss/*.scss', ['sass']);
+  gulp.watch('src/templates/*.hbs', ['hbs']);
   gulp.watch('src/*.hbs', ['hbs']);
   // gulp.watch('src/*.html', ['copyHTML']);
-  gulp.watch(['src/index.html', 'src/assets/scss/*', 'src/assets/js/*']).on('change', browserSync.reload);
+  gulp.watch(['src/templates/*.hbs','src/*.hbs', 'src/assets/scss/*', 'src/assets/js/*']).on('change', browserSync.reload);
 });
